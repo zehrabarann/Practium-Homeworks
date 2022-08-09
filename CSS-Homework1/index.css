@@ -1,0 +1,22 @@
+.pages {
+    display: flex;
+    justify-content: center;
+}
+
+.page-title {
+    color: #1C3879;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 15px;
+}
+
+.page-content {
+    text-align: center;
+}
+
+.content-titles {
+    color: #607EAA;
+}
+
+.page-content ul li, .page-content ol li {
+    list-style-position: inside
+}
