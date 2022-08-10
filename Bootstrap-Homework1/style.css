@@ -1,0 +1,60 @@
+.container {
+    margin: 30px auto;
+}
+
+.cards {
+    margin-bottom: 20px;
+}
+
+.cards:hover {
+    cursor: pointer;
+}
+
+.page-title {
+    margin-right: 8px;
+}
+
+.card-body span {
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.card-title {
+    height: 48px;
+    color: #495C83;
+}
+
+.content-titles {
+    color: #5A8F7B;
+}
+
+.musical-instruments-list li {
+    list-style-position: inside;
+    text-align: center;
+}
+
+.lists {
+    text-align: center;
+}
+
+.content-titles {
+    color: #495C83;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.about-us-cont {
+    max-width: 95%;
+    margin: 30px auto;
+}
+.header-area {
+    background-color: #484848; 
+    padding: 15px;
+    padding-left: 55px;
+}
+
+.display-4 {
+    color: #495C83;
+
+}
