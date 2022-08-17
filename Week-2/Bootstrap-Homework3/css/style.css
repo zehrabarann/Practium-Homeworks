@@ -95,6 +95,14 @@
     font-weight: bold;
     color: #5f5f5f;
   }
+
+  .view-count {
+    color: #0a66c2;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+  }
   
   .categories {
     font-size: 13px;
@@ -135,7 +143,7 @@
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: bold;
     font-size: 14px;
-    margin-left: 8px;
+    margin-left: 0;
   }
 
 .navbar .nav-item {
@@ -153,6 +161,10 @@
     /*background-image: url(https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fblogs-images.forbes.com%2Falejandrocremades%2Ffiles%2F2018%2F12%2Fbusiness-3605367_1920-1200x741.jpg);*/
     height: 56.25px;
 
+}
+
+.account-img {
+  background-image: url(https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fblogs-images.forbes.com%2Falejandrocremades%2Ffiles%2F2018%2F12%2Fbusiness-3605367_1920-1200x741.jpg);
 }
 
 .card-header .left-person-image {
@@ -329,6 +341,7 @@
 
 .middle-area-cont {
   margin-top: 85px;
+  /* max-width: 1330px !important; */
 }
 
 .list-inline {
@@ -353,7 +366,7 @@
 }
 
 .navbar {
-  padding: 0.5rem 2rem !important;
+  padding: 0 !important;
 }
 
 .header-links {
@@ -379,18 +392,24 @@
 
 .post-header {
   height: 72px;
-
+  display: flex;
+  align-items: center;
+  padding: 0 20px !important;
 }
 
 .message {
   width: 300px;
-  right: 0 !important;
   border-radius: 5px 5px 0 0;
   height: 50px; 
   position: -webkit-sticky; 
   border-radius: 5px; 
   margin-left: auto; 
-  right: 15px;
+  right: 15px !important;
+}
+
+.message .navbar-brand {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .message .navbar-brand img {
@@ -451,3 +470,161 @@
 .right-panel .card {
   width: 19rem;
 }
+
+.right-panel .text-center {
+  position: sticky;
+  overflow: visible;
+  top: 4rem !important;
+}
+
+.new-list-title {
+  font-size: 13px; 
+  color: #5f5f5f;
+}
+
+.events {
+  font-size: 23px; 
+  color: #5f5f5f;
+}
+
+.following-hastags i {
+  font-size: 13px; 
+  font-weight: bold;
+}
+
+.following-hastags span {
+  font-size: 13px; 
+  color: #5f5f5f;
+}
+
+.post-header-people-information .posttext a {
+  color: #212529;
+
+}
+
+.post-header-people-information {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 10px;
+  min-width: calc(600px - 150px);
+}
+
+.post-header-people-information .post-title .icon{
+  height: 15px;
+  display: flex;
+  align-items: center;
+}
+.post-header-people-information .post-title{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  
+}
+.post-header-people-information .time {
+  display: flex;
+  align-items: center;
+}
+.post-header-people-information .time  i{
+ margin-left: 8px;
+}
+.post-header-people-information .post-title i , .time i{
+  margin: 0;
+  
+}
+.linkedin-corp span {
+  font-size: 12px; 
+  margin-left: -15px; 
+  color: #181817;
+}
+
+.post-header > span {
+  display: flex;
+  align-items: center;
+}
+
+.sticky-top {
+  top: 4rem !important;
+  overflow: visible;
+  position: sticky;
+}
+
+.search-box .form-control:focus {
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+@media screen and (max-width:575px) {
+  .post-header-people-information {
+    min-width: calc(345px - 150px);
+  }
+  .navbar-toggler {
+    display: none;
+  }
+
+  .search-box {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+  }
+
+  .navbar {
+    justify-content: flex-start !important;
+  }
+
+  .post-middle-area .card-footer  {
+    display: block;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 575px) and (max-width: 768px) {
+  .post-middle-area .card-footer  {
+    display: block;
+    padding: 10px;
+  }
+
+  .post-header-people-information {
+    min-width: calc(350px - 150px);
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .message .fa-chevron-up {
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .post-header-people-information {
+    min-width: calc(460px - 150px);
+  }
+
+  .post-middle-area .card-footer  {
+    display: block;
+    padding: 10px;
+  }
+
+  .message .fa-chevron-up {
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .post-header-people-information {
+    min-width: calc(520px - 150px);
+  }
+
+  .message .fa-chevron-up {
+    margin-right: 5px;
+  }
+}
+
+
