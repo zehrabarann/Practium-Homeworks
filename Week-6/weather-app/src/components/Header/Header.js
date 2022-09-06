@@ -3,15 +3,17 @@ import { cities } from "../../constants"
 import WeatherContext from "../../context/WeatherContext"
 const Header = () => {
 
-    const { fetchCityWeather } = useContext(WeatherContext)
+    const { fetchCityWeather, setCity } = useContext(WeatherContext)
     return (
         <>
-            <select name="city" onChange={(e) => fetchCityWeather(e.target.value) }>
-                {cities.map((element) => {
-                    return <option  value={element.id} key={element.id}>{element.name}</option>
-                })}
+            <div className="select-area">
+                <select name="city" onChange={(e) => { setCity(e.target.value); fetchCityWeather(e.target.value) }}>
+                    {cities.map((element) => {
+                        return <option value={element.id} key={element.id}>{element.name}</option>
+                    })}
 
-            </select>
+                </select>
+            </div>
         </>
     )
 }
