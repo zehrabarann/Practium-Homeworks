@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useCallback } from "react";
 import { createContext, useState } from "react";
 import { cities } from "../constants";
 
@@ -11,6 +12,7 @@ export const WeatherProvider = ({ children }) => {
 
 
     const fetchCityWeather = async (city) => {
+        setCity(city)
         const citiesFind = cities.find((element) => element.id === parseInt(city));
         await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${citiesFind.latitude}&lon=${citiesFind.longitude}&appid=${process.env.REACT_APP_API_KEY}`)
             .then((response) => setWeather(response.data))
@@ -19,8 +21,22 @@ export const WeatherProvider = ({ children }) => {
 
     }
 
+    const changeCity = useCallback((city) => {
+        fetchCityWeather(city)
+    }, [])
 
-    const values = { weather1, setWeather, city, setCity, fetchCityWeather, forecast, setForecast }
+
+    //Get current location 
+    navigator.geolocation.getCurrentPosition((position) => {
+        const p = position.coords;
+        //console.log(p.latitude,p.longitude);
+        let currentLat = p.latitude
+        let currentLon = p.longitude
+        console.log(currentLat, currentLon)
+    })
+
+
+    const values = { weather1, setWeather, city, changeCity, fetchCityWeather, forecast, setForecast }
     return <WeatherContext.Provider value={values}>{children}</WeatherContext.Provider>
 
 }

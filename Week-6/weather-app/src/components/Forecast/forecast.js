@@ -27,8 +27,8 @@ const Forecast = () => {
                 {forecast.list?.splice(0, 7).map((item, index) => {
                     return (
                         <div className="daily-item" key={index}>
-                            <p className="days">{forecatDays[index]}</p>
-                            <p className="desc">{item.weather[0].description}</p>
+                            <p className="days">{forecatDays[index].slice(0,3)}</p>
+                            {/* <p className="desc">{item.weather[0].description}</p> */}
                             <img alt="weather" src={`icons/${item.weather[0].icon}.png`} />
                             {/* <p>{Math.round(item.main.temp_min)}°C / {""} {Math.round(item.main.temp_max)}°C </p> */}
                             <div className="temp-area">

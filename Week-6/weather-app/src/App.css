@@ -64,8 +64,10 @@
   align-items: center;
 }
 
-.desc , .desc {
+.desc , .days {
   margin: 5px 0;
+  color: #b9b8b8;
+  font-weight: bold;
 }
 
 .weather-top {
@@ -90,4 +92,12 @@
 select {
   padding: 4px;
   border-color: #dedede;
+}
+
+.temp-area p {
+  margin: 5px 0;
+}
+
+.weather-top img {
+  height: 45px;
 }
