@@ -10,23 +10,34 @@ const Search = () => {
         <div className="container">
             <div className="weather-box">
                 <div className="weather-top">
-                    <div>
+                    <div className="name-image">
                         <h1>{weather1.name}</h1>
-                        {/* <img alt="weather" src={`icons/${weather1.weather[0].icon}.png`} /> */}
+                        <img alt="weather" src={`icons/${weather1.weather[0].icon}.png`} />
                     </div>
-
-                    {/* <p> Maksimum Sıcaklık: {String(weather1.main.temp_max).slice(0,2)}</p>
-                    <p> Nem: {weather1.main.humudity}</p>
-                    <p> Rakım: {weather1.main.sea_level}</p>
- */}
-
                 </div>
-
                 <div className="weather-bottom">
-                    {/* <p>{weather1.sys.sunrise}</p> */}
-                    {/* <h1>{weather1.main.feels_like}</h1>
-                    <h1>{weather1.main.temp_max}</h1> */}
-                    {/* <p>{weather1.weather[0].description}</p> */}
+                    <div className="weather-temp">
+                        <p className="detail-temp">{weather1.main.feels_like}</p>
+                    </div>
+                    <div className="weather-detail">
+                        <h4>Details</h4>
+                        <div className="detail-values">
+                            <label>Feels Like:</label>
+                            <label> {weather1.main.feels_like}</label>
+                        </div>
+                        <div className="detail-values">
+                            <label>Wind:</label>
+                            {/* <label>{weather1.wind.speed}</label> */}
+                        </div>
+                        <div className="detail-values">
+                            <label>Humidity:</label>
+                            {/* <label>{weather1.main.humidity}</label> */}
+                        </div>
+                        <div className="detail-values">
+                            <label>Pressure:</label>
+                            {/* <label>{weather1.main.pressure}</label> */}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
