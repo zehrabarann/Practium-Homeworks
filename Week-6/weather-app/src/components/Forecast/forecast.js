@@ -3,7 +3,7 @@ import WeatherContext from "../../context/WeatherContext"
 
 
 const Forecast = () => {
-    const { forecast } = useContext(WeatherContext)
+    const { forecast, weather1 } = useContext(WeatherContext)
     console.log(forecast)
 
     //Get Days and Show week
@@ -16,37 +16,30 @@ const Forecast = () => {
 
     console.log(forecatDays)
 
+    if (Object.keys(weather1).length > 0) {
 
-
-
-
-    return (
-        <>
-            <label>Daily</label>
-            <div className="daily-area">
-                {forecast.list?.splice(0, 7).map((item, index) => {
-                    return (
-                        <div className="daily-item" key={index}>
-                            <p className="days">{forecatDays[index].slice(0,3)}</p>
-                            {/* <p className="desc">{item.weather[0].description}</p> */}
-                            <img alt="weather" src={`icons/${item.weather[0].icon}.png`} />
-                            {/* <p>{Math.round(item.main.temp_min)}°C / {""} {Math.round(item.main.temp_max)}°C </p> */}
-                            <div className="temp-area">
-                                <p className="max-temp">{String(Math.round(item.main.temp_max)).slice(0,2)}°C </p>
-                                <p className="min-temp">{String(Math.round(item.main.temp_min)).slice(0,2)}°C </p>
+        return (
+            <>
+                <label>Daily</label>
+                <div className="daily-area">
+                    {forecast.list?.splice(0, 7).map((item, index) => {
+                        return (
+                            <div className="daily-item" key={index}>
+                                <p className="days">{forecatDays[index].slice(0, 3)}</p>
+                                <img alt="weather" src={`icons/${item.weather[0].icon}.png`} />
+                                <div className="temp-area">
+                                    <p className="max-temp">{Math.round(weather1.daily[0].temp.max)}°C</p>
+                                    <p className="min-temp">{Math.round(weather1.daily[0].temp.min)}°C</p>
+                                </div>
                             </div>
+                        )
+                    })}
 
+                </div>
 
-
-
-                        </div>
-                    )
-                })}
-
-            </div>
-
-        </>
-    )
+            </>
+        )
+    }
 }
 
 export default Forecast

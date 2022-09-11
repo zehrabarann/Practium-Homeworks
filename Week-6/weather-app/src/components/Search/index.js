@@ -2,45 +2,48 @@ import { useContext } from "react"
 import WeatherContext from "../../context/WeatherContext"
 
 const Search = () => {
-    const { weather1 } = useContext(WeatherContext)
+    const { weather1, forecast } = useContext(WeatherContext)
     console.log('weather', weather1)
 
+    if (Object.keys(weather1).length > 0) {
 
-    return (
-        <div className="container">
-            <div className="weather-box">
-                <div className="weather-top">
-                    <div className="name-image">
-                        <h1>{weather1.name}</h1>
-                        <img alt="weather" src={`icons/${weather1.weather[0].icon}.png`} />
+        return (
+            <div className="container">
+                <div className="weather-box">
+                    <div className="weather-top">
+                        <div className="name-image">
+                            <h1>{forecast.city.name}</h1>
+                            <h3>{forecast.list[0].weather[0].description}</h3>
+                        </div>
+                        <img alt="weather" src={`icons/${weather1?.daily[0].weather[0].icon}.png`} />
                     </div>
-                </div>
-                <div className="weather-bottom">
-                    <div className="weather-temp">
-                        <p className="detail-temp">{weather1.main.feels_like}</p>
-                    </div>
-                    <div className="weather-detail">
-                        <h4>Details</h4>
-                        <div className="detail-values">
-                            <label>Feels Like:</label>
-                            <label> {weather1.main.feels_like}</label>
-                        </div>
-                        <div className="detail-values">
-                            <label>Wind:</label>
-                            {/* <label>{weather1.wind.speed}</label> */}
-                        </div>
-                        <div className="detail-values">
-                            <label>Humidity:</label>
-                            {/* <label>{weather1.main.humidity}</label> */}
-                        </div>
-                        <div className="detail-values">
-                            <label>Pressure:</label>
-                            {/* <label>{weather1.main.pressure}</label> */}
+                    <div className="weather-bottom">
+                        <p className="detail-temp">{Math.floor(weather1.daily[0].temp.day)}°C</p>
+                        <div className="detail">
+                            <div className="weather-detail">
+                                <h4>Details</h4>
+                                <div className="detail-values">
+                                    <label>Max Temp:</label>
+                                    <label> {Math.floor(weather1.daily[0].temp.max)}°C</label>
+                                </div>
+                                <div className="detail-values">
+                                    <label>Min Temp:</label>
+                                    <label>{Math.floor(weather1.daily[0].temp.min)}°C</label>
+                                </div>
+                                <div className="detail-values">
+                                    <label>Wind Speed:</label>
+                                    <label>{weather1.daily[0].wind_speed}ms</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        )
+
+    }
+    return (
+        <>Loading</>
     )
 }
 

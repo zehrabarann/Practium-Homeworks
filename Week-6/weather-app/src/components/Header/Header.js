@@ -5,7 +5,7 @@ const Header = () => {
 
     const { fetchCityWeather, changeCity } = useContext(WeatherContext)
     return (
-        <>
+        <div className="header-container">
             <div className="select-area">
                 <select name="city" onChange={(e) => { changeCity(e.target.value); }}>
                     {cities.map((element) => {
@@ -14,7 +14,7 @@ const Header = () => {
 
                 </select>
             </div>
-        </>
+        </div>
     )
 }
 

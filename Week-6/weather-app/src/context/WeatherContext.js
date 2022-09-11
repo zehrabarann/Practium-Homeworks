@@ -14,10 +14,10 @@ export const WeatherProvider = ({ children }) => {
     const fetchCityWeather = async (city) => {
         setCity(city)
         const citiesFind = cities.find((element) => element.id === parseInt(city));
-        await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${citiesFind.latitude}&lon=${citiesFind.longitude}&appid=${process.env.REACT_APP_API_KEY}`)
-            .then((response) => setWeather(response.data))
         await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${citiesFind.latitude}&lon=${citiesFind.longitude}&appid=${process.env.REACT_APP_API_KEY}`)
             .then((response) => setForecast(response.data))
+        await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${citiesFind.latitude}&exclude=minutely,hourly&lang=tr&units=metric&lon=${citiesFind.longitude}&appid=${process.env.REACT_APP_API_KEY}`)
+            .then((response) => setWeather(response.data))
 
     }
 
