@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+
+.image-gallery-svg {
+  height: 60px !important;
+  width: 40px !important;
+
+}
+
+.image-gallery-slides {
+  max-height: 405px;
+}
+
+.image-gallery-image {
+  border-radius: 5px;
+}
+
+.products-general-box {
+  width: 97%;
+  margin: 30px auto;
+}
+
+.products-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

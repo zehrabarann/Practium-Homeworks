@@ -1,4 +1,4 @@
-import { Box, Button, Text } from "@chakra-ui/react"
+import { Box, Button, Flex, Grid, GridItem, Text } from "@chakra-ui/react"
 import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
 import { fetchProduct } from "../../api"
@@ -7,34 +7,38 @@ import ImageGallery from 'react-image-gallery';
 
 const ProductDetail = () => {
 
-    const {product_id} = useParams()
+    const { product_id } = useParams()
 
-    const {isLoading, isError, data} = useQuery(['product', product_id], () => {
+    const { isLoading, isError, data } = useQuery(['product', product_id], () => {
         return fetchProduct(product_id)
     })
 
-    if(isLoading) {
+    if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    if(isError) {
+    if (isError) {
         return <div>Error!</div>;
     }
 
     console.log(data);
 
-    const images = data.photos.map((url) => ({original: url}))
+    const images = data.photos.map((url) => ({ original: url }))
 
-    return(
+    return (
         <div>
-         <Button colorScheme="pink">Add to basket</Button>   
-         <Text as="h2" fontSize="2xl">{data.title}</Text>
-         <Text>{moment(data.createdAt).format("DD/MM/YYYY")}</Text>
-         <p>{data.description}</p>
+            <Flex>
+                <Box margin="10" w="40%">
+                    <ImageGallery items={images} showThumbnails={false} showPlayButton={false} />
+                </Box>
 
-         <Box margin="10">
-             <ImageGallery items={images} showThumbnails={false}/>
-         </Box>
+                <Box margin="10" w="60%">
+                    <Text as="h2" fontSize="2xl" fontWeight="bold">{data.title}</Text>
+                    <Text color="gray.600">{moment(data.createdAt).format("DD/MM/YYYY")}</Text>
+                    <Text mt="10px" color="gray.500">{data.description}</Text>
+                    <Button background="blue" color="white" mt="20px">Add to basket</Button>
+                </Box>
+            </Flex>
         </div>
     )
 }

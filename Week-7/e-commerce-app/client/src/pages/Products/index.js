@@ -26,8 +26,8 @@ const Products = () => {
 
     console.log("data", data)
     return (
-        <>
-            <Grid templateColumns='repeat(3, 1fr)' gap={4}>
+        <div className="products-general-box">
+            <Grid templateColumns='repeat(4, 1fr)' gap={7}>
                 {data.pages.map((group, index) => {
                     return (
                         <React.Fragment key={index}>
@@ -56,7 +56,7 @@ const Products = () => {
                             : 'Nothing more to load'}
                 </Button>
             </Flex>
-        </>
+        </div>
     )
 }
 
