@@ -11,6 +11,8 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Profile from './pages/Profile';
 import PrivateRoute from './pages/PrivateRoute';
+import Basket from './pages/Basket';
+import Error404 from './pages/Error404';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/product/:product_id" element={<ProductDetail />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/basket" element={<Basket />}></Route>
+        <Route path="/*" element={<Error404 />}></Route>
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />}></Route>
         </Route>
