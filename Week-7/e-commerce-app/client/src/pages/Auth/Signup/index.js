@@ -3,11 +3,14 @@ import {useFormik} from "formik"
 import validationSchema from "./validations"
 import { fetchRegister } from "../../../api"
 import { useAuth } from "../../../contexts/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 
 const Signup = () => {
 
     const {login} = useAuth()
+    const history = useNavigate();
+
 
     const formik = useFormik({
         initialValues: {
@@ -21,6 +24,8 @@ const Signup = () => {
             try{
                 const registerResponse = await fetchRegister({email: values.email, password: values.password});
                 login(registerResponse)
+                history("/profile")
+
                 console.log(registerResponse)
             }catch(err) {
                 bag.setErrors({general: err.response.data.message})

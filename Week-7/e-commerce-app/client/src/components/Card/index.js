@@ -12,7 +12,7 @@ const Card = ({ item }) => {
                     <Box fontWeight='bold' as='h3' lineHeight='tight'>
                         {item.title}
                     </Box>
-                    <Box display='flex' alignItems='baseline'>
+                    <Box display='flex' alignItems='baseline' color="gray.500">
                         {moment(item.createdAt).format("DD/MM/YYYY")}
                     </Box>
 
@@ -22,7 +22,7 @@ const Card = ({ item }) => {
                         {item.description}
                     </Box>
                   
-                    <Box>
+                    <Box mt="2" fontWeight="semibold" fontSize="20px">
                         {item.price}$
                     </Box>
                 </Box>

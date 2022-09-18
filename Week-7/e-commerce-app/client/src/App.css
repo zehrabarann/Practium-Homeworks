@@ -64,3 +64,9 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+
+.detail-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

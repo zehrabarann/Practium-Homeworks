@@ -1,9 +1,10 @@
-import { Box, Button, Flex, Grid, GridItem, Text } from "@chakra-ui/react"
+import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
 import { fetchProduct } from "../../api"
 import moment from "moment"
 import ImageGallery from 'react-image-gallery';
+
 
 const ProductDetail = () => {
 
@@ -14,7 +15,7 @@ const ProductDetail = () => {
     })
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className="detail-loading">Loading...</div>;
     }
 
     if (isError) {
@@ -36,7 +37,7 @@ const ProductDetail = () => {
                     <Text as="h2" fontSize="2xl" fontWeight="bold">{data.title}</Text>
                     <Text color="gray.600">{moment(data.createdAt).format("DD/MM/YYYY")}</Text>
                     <Text mt="10px" color="gray.500">{data.description}</Text>
-                    <Button background="blue" color="white" mt="20px">Add to basket</Button>
+                    <Button colorScheme="teal" mt="20px">Add to basket</Button>
                 </Box>
             </Flex>
         </div>
