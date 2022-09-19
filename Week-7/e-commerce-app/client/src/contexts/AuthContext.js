@@ -1,74 +1,73 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { useState, createContext, useContext} from "react"
+import { useState, createContext, useContext } from "react";
 import { fetchLogout, fetchMe } from "../api";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null);
-    const [loggedIn, setLoggedIn] = useState(false)
-    const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    (async () => {
+      try {
+        const me = await fetchMe();
+        setLoggedIn(true);
+        setUser(me);
+        console.log("me", me);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+      }
+    })();
+  }, []);
 
-    useEffect(() => {
-        (async () => {
-            try{
-                const me = await fetchMe();
-                setLoggedIn(true)
-                setUser(me)
-                console.log("me",me)
-                setLoading(false)
-            }catch(err){ 
-                setLoading(false)
-            }
-        })()
-    },[])
+  const login = (data) => {
+    setLoggedIn(true);
+    setUser(data.user);
 
-    const login = (data) => {
-        setLoggedIn(true)
-        setUser(data.user)
+    localStorage.setItem("access-token", data.accessToken);
+    localStorage.setItem("refresh-token", data.refreshToken);
+  };
 
-        localStorage.setItem('access-token', data.accessToken)
-        localStorage.setItem('refresh-token', data.refreshToken)
-    }
+  const logout = async (callback) => {
+    setLoading(false);
+    setUser(null);
+    setLoggedIn(false);
 
-    const logout = async(callback) => {
-        setLoading(false)
-        setUser(null)
+    await fetchLogout();
 
-        await fetchLogout();
+    localStorage.removeItem("access-token");
+    localStorage.removeItem("refresh-token");
 
-        localStorage.removeItem("access-token")
-        localStorage.removeItem("refresh-token")
+    callback();
+  };
 
-        callback()
-    }
+  const values = {
+    loggedIn,
+    user,
+    login,
+    logout,
+  };
 
-    const values = {
-        loggedIn,
-        user,
-        login,
-        logout
-    }
+  if (loading) {
+    return (
+      <Flex justifyContent="center" alignItems="center" h="100vh">
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          size="xl"
+          color="red.500"
+        />
+      </Flex>
+    );
+  }
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+};
 
-    if(loading) {
-        return(
-            <Flex justifyContent="center" alignItems="center" h="100vh">
-                <Spinner 
-                thickness="4px" 
-                speed="0.65s" 
-                emptyColor="gray.200" 
-                size="xl" 
-                color="red.500"/>
-            </Flex>
-        )
-    }
-    return(
-        <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
-    )
-}
+const useAuth = () => useContext(AuthContext);
 
-const useAuth = () => useContext(AuthContext)
-
-export {AuthProvider, useAuth}
+export { AuthProvider, useAuth };

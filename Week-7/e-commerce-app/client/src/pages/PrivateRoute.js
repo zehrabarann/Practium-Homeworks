@@ -1,29 +1,24 @@
-import { Route } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
-import { useNavigate } from 'react-router-dom';
-import { Navigate, Outlet } from 'react-router-dom'
+import { useAuth } from "../contexts/AuthContext";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
+const PrivateRoute = ({ element: Component, admin, ...rest }) => {
+  const { loggedIn, user } = useAuth();
+  const authContext = useAuth();
+  let auth = { token: true };
+  console.log(auth);
+  const { pathname } = useLocation();
 
+  if (pathname === "/profile") {
+    return loggedIn ? <Outlet /> : <Navigate to="/login" />;
+  }
 
-const PrivateRoute = ({element: Component, ...rest}) => {
-    const {loggedIn} = useAuth();
-    let auth = {'token':true}
+  if (pathname === "/admin") {
+    admin && user.role === "admin" ? <Outlet /> : <Navigate to="/" />;
+  }
 
-    return(
-        // <Route {...rest} render={(props) => {
-        //     if(loggedIn) {
-        //         return <Component {...props}/>
-        //     }
+  return (
+    <></>
+  );
+};
 
-        //     else {
-        //         <Navigate to='/login'/>
-        //     }
-        // }}> 
-
-        // </Route>
-        auth.token ? <Outlet/> : <Navigate to='/login'/>
-
-    )
-}
-
-export default PrivateRoute
+export default PrivateRoute;

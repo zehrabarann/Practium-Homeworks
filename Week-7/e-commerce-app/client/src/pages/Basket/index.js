@@ -89,7 +89,7 @@ const Basket = () => {
                                 {total > 1000 ? "Free Shipping" : "Shipping Fee: 30$"}
                             </Text>
                         </Box>
-                        <Box display="flex" justifyContent="space-between" mb="5">
+                        {/* <Box display="flex" justifyContent="space-between" mb="5">
                             {
                                 items.map((item) => {
                                     return (
@@ -105,7 +105,7 @@ const Basket = () => {
                                     )
                                 })
                             }
-                        </Box>
+                        </Box> */}
                         <Button color="white" background="black" borderColor="black" _hover="black" mt="2" w="100%" onClick={onOpen} >Order</Button>
                     </Box>
                 </Flex>

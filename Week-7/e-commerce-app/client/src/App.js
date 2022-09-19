@@ -13,6 +13,8 @@ import Profile from './pages/Profile';
 import PrivateRoute from './pages/PrivateRoute';
 import Basket from './pages/Basket';
 import Error404 from './pages/Error404';
+import Admin from './pages/Admin';
+import Orders from './pages/Admin/Orders';
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
         <Route path="/*" element={<Error404 />}></Route>
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/admin" element={<Admin />} admin={true}></Route>
+          <Route path="/orders" element={<Orders />}></Route>
+          <Route path="/products" element={<Products />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
