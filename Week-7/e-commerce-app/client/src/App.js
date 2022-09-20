@@ -16,6 +16,8 @@ import Admin from './pages/Admin';
 import Orders from './pages/Admin/Orders';
 import Home from './pages/Admin/Home';
 import { useAuth } from './contexts/AuthContext';
+import AdminProducts from './pages/Admin/AdminProducts';
+
 
 function App() {
   const { loggedIn, user } = useAuth();
@@ -32,8 +34,9 @@ function App() {
         <Route path="/basket" element={<Basket />}></Route>
         {loggedIn && user.role === "admin" && <>
           <Route path="/admin/home" element={<Home />} admin={true}></Route>
-          <Route path="/orders" element={<Orders />}></Route>
+          <Route path="/admin/orders" element={<Orders />}></Route>
           <Route path="/admin" element={<Admin />} admin={true}></Route>
+          <Route path="/admin/products" element={<AdminProducts />}></Route>
         </>}
         {loggedIn && <Route path="/profile" element={<Profile />}></Route>}
 

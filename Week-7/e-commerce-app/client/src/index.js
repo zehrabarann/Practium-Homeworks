@@ -8,12 +8,13 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './contexts/AuthContext';
 import { BasketProvider } from './contexts/BasketContext';
+import 'antd/dist/antd.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      //refetchOnMount: false,
-      //refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
     }
   }
 })
@@ -30,7 +31,7 @@ root.render(
           </BasketProvider>
         </AuthProvider>
       </ChakraProvider>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>
 );
