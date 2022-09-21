@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import { Table } from "antd";
 import { useMutation, useQuery, useQueryClient } from "react-query"
 import { deleteProduct, fetchProductList } from "../../../api";
@@ -68,7 +68,15 @@ const AdminProducts = () => {
     console.log(data)
     return (
         <div>
-            <Text fontSize="2xl">Products</Text>
+
+            <Flex justifyContent="space-between" alignItems="center">
+                <Text fontSize="2xl">Products</Text>
+                <Link to="/admin/products/new">
+                    <Button>New</Button>
+                </Link>
+
+            </Flex>
+
 
             <Table dataSource={data} columns={columns} rowKey="_id"></Table>
         </div>
