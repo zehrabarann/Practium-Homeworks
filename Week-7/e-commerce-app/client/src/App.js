@@ -17,6 +17,7 @@ import Orders from './pages/Admin/Orders';
 import Home from './pages/Admin/Home';
 import { useAuth } from './contexts/AuthContext';
 import AdminProducts from './pages/Admin/AdminProducts';
+import AdminProductDetail from './pages/Admin/AdminProductDetail';
 
 
 function App() {
@@ -35,8 +36,9 @@ function App() {
         {loggedIn && user.role === "admin" && <>
           <Route path="/admin/home" element={<Home />} admin={true}></Route>
           <Route path="/admin/orders" element={<Orders />}></Route>
-          <Route path="/admin" element={<Admin />} admin={true}></Route>
-          <Route path="/admin/products" element={<AdminProducts />}></Route>
+          <Route exact path="/admin" element={<Admin />} admin={true}></Route>
+          <Route  path="/admin/products" element={<AdminProducts />}></Route>
+          <Route path="/admin/products/:product_id" element={<AdminProductDetail />}></Route>
         </>}
         {loggedIn && <Route path="/profile" element={<Profile />}></Route>}
 
